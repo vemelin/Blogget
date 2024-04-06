@@ -6,7 +6,7 @@ import logo from '../../../img/logo.svg'
 export const Logo = props => {
   return (
     <Link to='/' className={style.container}>
-      <img className={style.logo} src={logo} alt=''></img>
+      <img className={style.logo} src={logo} alt='To home page'></img>
     </Link>
   )
 };

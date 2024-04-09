@@ -12,27 +12,33 @@ import AuthorName from './AuthorName/AuthorName';
 
 /* eslint-disable react/no-unknown-property */
 
-export const Post = ({postData}) => {
-  const {title, author, ups, date} = postData;
+const Post = ({postData}) => {
+  // const {title, author, ups, date} = postData;
 
   return (
-    <li className={style.post}>
-      <Image src={noPhoto} title={title} />
-      <div className={style.content}>
-        <Title title={title} />
-        <AuthorName authorName={author} />
-        <Button control={'delete'}/>
-      </div>
-      <div className={style.rating}>
-        <Button control={'up'} />
-        <Text label={ups} />
-        <Button control={'down'}/>
-      </div>
-      <PostDate dateTime={date} />
-    </li>
+    postData.map(data => {
+      return (
+        <li className={style.post} key={data.id}>
+          <Image src={noPhoto} title={data.title} />
+          <div className={style.content}>
+            <Title title={data.title} />
+            <AuthorName authorName={data.author} />
+            <Button control={'delete'}/>
+          </div>
+          <div className={style.rating}>
+            <Button control={'up'} />
+            <Text label={data.ups} />
+            <Button control={'down'}/>
+          </div>
+          <PostDate dateTime={data.date} />
+        </li>
+      );
+    })
   );
 };
 
 Post.PropTypes = {
   postData: PropTypes.object,
 };
+
+export default Post;

@@ -7,6 +7,6 @@ import style from './<%= component_name %>.module.css';
 
 export const <%= component_name %> = () => {
   return (
-    <div></div>
+    <div className={style.<%= component_name %>}></div>
   );
 };

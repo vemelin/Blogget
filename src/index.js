@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/index.css';
 import BloggetApp from './BloggetApp';
-import reportWebVitals from './reportWebVitals';
 
 import {BrowserRouter} from 'react-router-dom';
 
@@ -14,5 +13,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-reportWebVitals();

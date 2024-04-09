@@ -2,29 +2,33 @@ import React from 'react';
 import noPhoto from './assets/placeholder.jpeg';
 import style from './Post.module.css';
 import PropTypes from 'prop-types';
-import formateDate from '../../../../utils/date';
+
+import Image from './Image/Image';
+import Title from './Title/Title';
+import Text from './Text/Text';
+import Button from './Button/Button';
+import PostDate from './PostDate/PostDate';
+import AuthorName from './AuthorName/AuthorName';
 
 /* eslint-disable react/no-unknown-property */
 
 export const Post = ({postData}) => {
   const {title, author, ups, date} = postData;
-  console.log(title, author, ups, date);
 
   return (
     <li className={style.post}>
-      <img src={noPhoto} className={style.img} alt={title} />
+      <Image src={noPhoto} title={title} />
       <div className={style.content}>
-        <h2 className={style.title}>
-          <a href="#post" className={style.linkPost}>{title}</a>
-        </h2>
-        <a className={style.linkAuthor} href='#author'>{author}</a>
+        <Title title={title} />
+        <AuthorName authorName={author} />
+        <Button control={'delete'}/>
       </div>
       <div className={style.rating}>
-        <button className={style.up} arial-label="Increase Rate"></button>
-        <p className={style.ups}>{ups}</p>
-        <button className={style.down}></button>
+        <Button control={'up'} />
+        <Text label={ups} />
+        <Button control={'down'}/>
       </div>
-      <time className={style.date} dateTime={date}>{formateDate(date)}</time>
+      <PostDate dateTime={date} />
     </li>
   );
 };

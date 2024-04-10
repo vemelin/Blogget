@@ -4,8 +4,8 @@
   border: 0;
 }
 
-.authImg {
-  width: 100%;
-  height: 100%;
+.authImg svg {
+  width: 85%;
+  height: 85%;
   color: var(--orange);
 }

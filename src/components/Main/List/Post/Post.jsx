@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Image from './Image/Image';
 import Title from './Title/Title';
-import Text from './Text/Text';
+import Rating from './Rating/Rating';
 import Button from './Button/Button';
 import PostDate from './PostDate/PostDate';
 import AuthorName from './AuthorName/AuthorName';
@@ -27,7 +27,7 @@ const Post = ({postData}) => {
           </div>
           <div className={style.rating}>
             <Button control={'up'} />
-            <Text label={data.ups} />
+            <Rating label={data.ups} />
             <Button control={'down'}/>
           </div>
           <PostDate dateTime={data.date} />

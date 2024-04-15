@@ -22,31 +22,24 @@ const Post = () => {
     return <div>Loading...</div>;
   }
 
+  // Replace not loaded images with the placeholders
   const img = document.querySelectorAll('img');
   img.forEach(el => {
-    console.log(el.onload);
     if (el.naturalWidth === 0 && el.naturalHeight === 0) {
       // The image does not have a preview
-      console.log('test');
+      el.src = noPhoto;
     } else {
       console.log(el);
       // The image has a preview
     }
   });
 
-  const handleImageLoad = () => {
-    console.log(img);
-    // Set imageLoaded to true when the image has finished loading
-    // setImageLoaded(true);
-  };
-
 
   return (
     posts.map(data => (
       <li className={style.post} key={data.id}>
         { posts ? (
-              <Image src={data.thumbnail} title={data.title}
-                onLoad={handleImageLoad} />
+              <Image src={data.thumbnail} title={data.title} />
           ) : (
             <Image src={noPhoto} title={data.title} />
           )}

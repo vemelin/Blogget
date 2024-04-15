@@ -1,5 +1,5 @@
 import React from 'react';
-// import noPhoto from './assets/placeholder.jpeg';
+import noPhoto from './assets/placeholder.jpeg';
 import style from './Post.module.css';
 import PropTypes from 'prop-types';
 
@@ -22,11 +22,26 @@ const Post = ({postData}) => {
     return <div>Loading...</div>;
   }
 
+  const img = document.querySelectorAll('img');
+  img.forEach(el => {
+    console.log(el.complete);
+    console.log(el);
+    if (!el.complete) {
+      // The image is broken
+    }
+  });
+
   return (
     posts.map(data => {
       return (
         <li className={style.post} key={data.id}>
-          <Image src={data.thumbnail} title={data.title} />
+          { data.thumbnail &&
+            data.thumbnail !== 'self' &&
+            data.thumbnail !== 'default' ? (
+              <Image src={data.thumbnail} title={data.title} />
+          ) : (
+            <Image src={noPhoto} title={data.title} />
+          )}
           <div className={style.content}>
             <Title title={data.title} />
             <AuthorName authorName={data.author} />

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import style from './Tabs.module.css';
 import assignID from '../../../utils/generateID';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import debounceRaf from '../../../utils/debounce';
 
 import Text from '../../../UI/Text/Text';
@@ -75,8 +75,8 @@ const Tabs = () => {
   );
 };
 
-Tabs.PropTypes = {
-  LIST: PropTypes.array
+Tabs.propTypes = {
+  LIST: propTypes.array
 };
 
 export default Tabs;

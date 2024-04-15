@@ -1,7 +1,7 @@
 import React from 'react';
 import noPhoto from './assets/placeholder.jpeg';
 import style from './Post.module.css';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 import Image from './Image/Image';
 import Title from './Title/Title';
@@ -14,7 +14,7 @@ import {useReddit} from '../../../../hooks/RedditProvider';
 
 /* eslint-disable react/no-unknown-property */
 
-const Post = ({postData}) => {
+const Post = () => {
   // const {title, author, ups, date} = postData;
   const {posts, loading} = useReddit();
 
@@ -22,14 +22,14 @@ const Post = ({postData}) => {
     return <div>Loading...</div>;
   }
 
-  const img = document.querySelectorAll('img');
-  img.forEach(el => {
-    console.log(el.complete);
-    console.log(el);
-    if (!el.complete) {
-      // The image is broken
-    }
-  });
+  // const img = document.querySelectorAll('img');
+  // img.forEach(el => {
+  //   console.log(el.complete);
+  //   console.log(el);
+  //   // if (!el.complete) {
+  //   //   // The image is broken
+  //   // }
+  // });
 
   return (
     posts.map(data => {
@@ -59,8 +59,8 @@ const Post = ({postData}) => {
   );
 };
 
-Post.PropTypes = {
-  postData: PropTypes.object,
+Post.propTypes = {
+  postData: propTypes.array,
 };
 
 export default Post;

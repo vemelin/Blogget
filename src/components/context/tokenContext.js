@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import useToken from '../../hooks/token';
 
 export const tokenContext = React.createContext({});
@@ -13,6 +13,6 @@ export const TokenContextProvider = ({children}) => {
   );
 };
 
-TokenContextProvider.PropTypes = {
-  children: PropTypes.node.isRequired,
+TokenContextProvider.propTypes = {
+  children: propTypes.node.isRequired,
 };

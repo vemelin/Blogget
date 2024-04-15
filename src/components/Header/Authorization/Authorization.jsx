@@ -1,6 +1,6 @@
 import {useContext, useState} from 'react';
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import style from './Authorization.module.css';
 import SVG_URL from '../../../img/login.svg';
 import {ReactSVG} from 'react-svg';
@@ -48,6 +48,6 @@ export const Authorization = () => {
   );
 };
 
-Authorization.PropTypes = {
-  token: PropTypes.string,
+Authorization.propTypes = {
+  token: propTypes.string,
 };

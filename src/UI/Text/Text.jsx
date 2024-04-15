@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import style from './Text.module.css';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 const Text = prop => {
   const {
@@ -30,19 +30,19 @@ const Text = prop => {
 
 export default Text;
 
-Text.PropTypes = {
-  As: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  tsize: PropTypes.number,
-  dsize: PropTypes.number,
-  className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array,
+Text.propTypes = {
+  As: propTypes.string,
+  color: propTypes.string,
+  size: propTypes.number,
+  tsize: propTypes.number,
+  dsize: propTypes.number,
+  className: propTypes.string,
+  children: propTypes.oneOfType([
+    propTypes.string,
+    propTypes.object,
+    propTypes.array,
   ]),
-  href: PropTypes.string,
-  center: PropTypes.bool,
-  weight: PropTypes.string,
+  href: propTypes.string,
+  center: propTypes.bool,
+  weight: propTypes.string,
 };

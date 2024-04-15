@@ -29,7 +29,6 @@ const Post = () => {
       // The image does not have a preview
       el.src = noPhoto;
     } else {
-      console.log(el);
       // The image has a preview
     }
   });

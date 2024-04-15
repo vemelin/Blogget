@@ -1,5 +1,5 @@
 import React from 'react';
-import noPhoto from './assets/placeholder.jpeg';
+// import noPhoto from './assets/placeholder.jpeg';
 import style from './Post.module.css';
 import PropTypes from 'prop-types';
 
@@ -10,16 +10,23 @@ import Button from './Button/Button';
 import PostDate from './PostDate/PostDate';
 import AuthorName from './AuthorName/AuthorName';
 
+import {useReddit} from '../../../../hooks/RedditProvider';
+
 /* eslint-disable react/no-unknown-property */
 
 const Post = ({postData}) => {
   // const {title, author, ups, date} = postData;
+  const {posts, loading} = useReddit();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    postData.map(data => {
+    posts.map(data => {
       return (
         <li className={style.post} key={data.id}>
-          <Image src={noPhoto} title={data.title} />
+          <Image src={data.thumbnail} title={data.title} />
           <div className={style.content}>
             <Title title={data.title} />
             <AuthorName authorName={data.author} />
@@ -30,7 +37,7 @@ const Post = ({postData}) => {
             <Rating label={data.ups} />
             <Button control={'down'}/>
           </div>
-          <PostDate dateTime={data.date} />
+          <PostDate dateTime={data.created} />
         </li>
       );
     })

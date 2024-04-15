@@ -2,10 +2,11 @@ import {useState, useEffect} from 'react';
 
 const useToken = (state) => {
   const [token, setToken] = useState(state);
+
   useEffect(() => {
     if (location.pathname.includes('/auth')) {
       const token = new URLSearchParams(location.hash.substring(1))
-        . get('access_token');
+        .get('access_token');
       setToken(token);
     }
     if (localStorage.getItem('bearer', token)) {
@@ -20,7 +21,13 @@ const useToken = (state) => {
     }
   }, [token]);
 
-  return [token];
+  const deleteToken = () => {
+    // Remove token from localStorage and state
+    localStorage.removeItem('bearer');
+    setToken(null);
+  };
+
+  return [token, deleteToken];
 };
 
 export default useToken;

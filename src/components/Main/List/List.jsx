@@ -2,6 +2,7 @@ import React from 'react';
 import style from './List.module.css';
 import generateID from '../../../utils/generateID';
 import Post from './Post/Post';
+import {RedditProvider} from '../../../hooks/RedditProvider';
 
 const List = (props) => {
   const postData = [
@@ -40,9 +41,11 @@ const List = (props) => {
   ];
 
   return (
-    <ul className={style.list}>
-      <Post postData={postData}/>
-    </ul>
+    <RedditProvider>
+      <ul className={style.list}>
+        <Post postData={postData}/>
+      </ul>
+    </RedditProvider>
   );
 };
 

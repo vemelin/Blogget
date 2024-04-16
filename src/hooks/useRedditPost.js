@@ -1,32 +1,26 @@
-import {useState, useEffect} from 'react';
-// import {URL} from '../components/api/const';
+import {useEffect, useState} from 'react';
+import {URL} from '../components/api/const';
 
-export const useRedditPost = () => {
+const useRedditPost = () => {
   const [posts, setPosts] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPost = async () => {
-      setPosts(['test', 'pest']);
-      // setLoading(['loading']);
+    // Fetch Reddit posts
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch(`${URL}/best.json?limit=10`);
+        const data = await response.json();
+        setPosts(data.data.children.map(child => child.data));
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching Reddit posts:', error);
+      }
     };
-    return fetchPost();
-    // // Fetch Reddit posts
-    // const fetchPosts = async () => {
-    //   try {
-    //     const response = await fetch(`${URL}/best.json?limit=10`);
-    //     console.log(response);
-    //     const data = await response.json();
-    //     console.log(response);
-    //     setPosts(data.data.children.map(child => child.data));
-    //     setLoading(false);
-    //   } catch (error) {
-    //     console.error('Error fetching Reddit posts:', error);
-    //   }
-    // };
-
-    // fetchPosts();
+    fetchPosts();
   }, []);
 
-  return [posts];
+  return [posts, loading];
 };
+
+export default useRedditPost;

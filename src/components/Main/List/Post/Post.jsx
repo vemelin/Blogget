@@ -10,12 +10,12 @@ import Button from './Button/Button';
 import PostDate from './PostDate/PostDate';
 import AuthorName from './AuthorName/AuthorName';
 
-import {useReddit} from '../../../../hooks/RedditProvider';
+import {useRedditPost} from '../../../context/postContext';
 
 /* eslint-disable react/no-unknown-property */
 
 const Post = () => {
-  const {posts, loading} = useReddit();
+  const {posts, loading} = useRedditPost();
 
   if (loading) {
     return <div>Loading...</div>;

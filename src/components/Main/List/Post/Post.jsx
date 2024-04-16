@@ -16,7 +16,6 @@ import {useReddit} from '../../../../hooks/RedditProvider';
 
 const Post = () => {
   const {posts, loading} = useReddit();
-  // const [imageLoaded, setImageLoaded] = useState(false);
 
   if (loading) {
     return <div>Loading...</div>;

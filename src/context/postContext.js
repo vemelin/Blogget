@@ -1,6 +1,6 @@
 import {useState, useEffect, createContext, useContext} from 'react';
 import propTypes from 'prop-types';
-import {URL} from '../api/const';
+import {URL} from '../components/api/const';
 
 
 // Create a context to manage Reddit posts

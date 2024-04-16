@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import useToken from '../../hooks/token';
+import useToken from '../hooks/token';
 
 export const tokenContext = React.createContext({});
 

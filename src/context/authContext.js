@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 
 export const authContext = React.createContext({});
 export const AuthContextProvider = ({children}) => {

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.5.1",
     "localforage": "^1.10.0",
+    "markdown-to-jsx": "^7.4.7",
     "match-sorter": "^6.3.4",
     "normalize": "^0.3.1",
     "normalize.css": "^8.0.1",

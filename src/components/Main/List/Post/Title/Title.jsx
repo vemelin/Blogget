@@ -1,23 +1,27 @@
-import {useState, React} from 'react';
+import {React, useState} from 'react';
 import style from './Title.module.css';
 import Text from '../../../../../UI/Text/Text';
+import Modal from '../../../../Modal/Modal';
 
-const Title = ({title}) => {
+const Title = ({data}) => {
   const [isModalOpen, setModalOpen] = useState(false);
   return (
-    <Text
-      As='h2'
-      className={style.title} >
+    <div>
       <Text
-        As='a'
+        onClick={() => {
+          setModalOpen(true);
+          console.log('test');
+        }}
+        As="a"
         className={style.linkPost}
-        size={18} tsize={24}
+        size={18}
+        tsize={24}
         href={'#author'}
-        onClick={() => setModalOpen(true)}>
-        {title}
+      >
+        {data.title}
       </Text>
-      {isModalOpen && <div>Test</div>}
-    </Text>
+      {isModalOpen && <Modal data={data} />}
+    </div>
   );
 };
 

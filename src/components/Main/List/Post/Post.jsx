@@ -10,9 +10,7 @@ import Button from './Button/Button';
 import PostDate from './PostDate/PostDate';
 import AuthorName from './AuthorName/AuthorName';
 
-import {useRedditPost} from '../../../context/postContext';
-
-/* eslint-disable react/no-unknown-property */
+import {useRedditPost} from '../../../../context/postContext';
 
 const Post = () => {
   const {posts, loading} = useRedditPost();
@@ -33,28 +31,28 @@ const Post = () => {
   });
 
 
-  return (
-    posts.map(data => (
-      <li className={style.post} key={data.id}>
-        { posts ? (
-              <Image src={data.thumbnail} title={data.title} />
-          ) : (
-            <Image src={noPhoto} title={data.title} />
-          )}
-        <div className={style.content}>
-          <Title title={data.title} />
-          <AuthorName authorName={data.author} />
-          <Button control={'delete'}/>
-        </div>
-        <div className={style.rating}>
-          <Button control={'up'} />
-          <Rating label={data.ups} />
-          <Button control={'down'}/>
-        </div>
-        <PostDate dateTime={data.created} />
-      </li>
-    ))
-  );
+  return posts.map((data) => (
+    <li className={style.post} key={data.id}>
+      {posts ? (
+        <Image src={data.thumbnail} title={data.title} />
+      ) : (
+        <Image src={noPhoto} title={data.title} />
+      )}
+      <div className={style.content}>
+        <Title
+          data={data}
+        />
+        <AuthorName authorName={data.author} />
+        <Button control={'delete'} />
+      </div>
+      <div className={style.rating}>
+        <Button control={'up'} />
+        <Rating label={data.ups} />
+        <Button control={'down'} />
+      </div>
+      <PostDate dateTime={data.created} />
+    </li>
+  ));
 };
 
 Post.propTypes = {

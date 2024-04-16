@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from 'react';
 import {URL} from '../components/api/const';
-import {tokenContext} from '../components/context/tokenContext';
+import {tokenContext} from '../context/tokenContext';
 
 const useAuth = () => {
   const [auth, setAuth] = useState({});

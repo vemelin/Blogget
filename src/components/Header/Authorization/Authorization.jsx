@@ -7,8 +7,8 @@ import {ReactSVG} from 'react-svg';
 
 import Text from '../../../UI/Text/Text';
 import urlAuth from '../../api/auth';
-import {tokenContext} from '../../context/tokenContext';
-import {authContext} from '../../context/authContext';
+import {tokenContext} from '../../../context/tokenContext';
+import {authContext} from '../../../context/authContext';
 
 export const Authorization = () => {
   const {deleteToken} = useContext(tokenContext);

@@ -20,7 +20,14 @@ const Title = ({data}) => {
       >
         {data.title}
       </Text>
-      {isModalOpen && <Modal data={data} />}
+      {isModalOpen && (
+        <Modal
+          data={data}
+          closeModal={() => {
+            setModalOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 };

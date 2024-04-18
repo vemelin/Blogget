@@ -10,7 +10,6 @@ const Title = ({data}) => {
       <Text
         onClick={() => {
           setModalOpen(true);
-          console.log('test');
         }}
         As="a"
         className={style.linkPost}

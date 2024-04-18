@@ -15,6 +15,7 @@ const Modal = ({data, closeModal}) => {
     }
   };
   useEffect(() => {
+    document.addEventListener('keydown', e => e.key === 27 && closeModal());
     document.addEventListener('click', handleClick);
     return () => {
       document.removeEventListener('click', handleClick);
@@ -39,7 +40,10 @@ const Modal = ({data, closeModal}) => {
           >{markdown}</Markdown>
         </div>
         <p className={style.author}>{author}</p>
-        <button className={style.close}>
+        <button
+          className={style.close}
+          onClick={() => closeModal()}
+        >
           <CloseIcon />
         </button>
       </div>

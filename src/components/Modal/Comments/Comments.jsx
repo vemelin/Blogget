@@ -1,27 +1,24 @@
 import React from 'react';
 import style from './Comments.module.css';
 import PostDate from '../../Main/List/Post/PostDate/PostDate';
+import Markdown from 'markdown-to-jsx';
 
-const Comments = ({data}) => {
-  console.log(data);
+const Comments = ({data, loading}) => {
   return (
     <div className={style.Comments}>
-      {data.map((item, i) => {
-        return (
-          <ul className="list" key={i}>
-            <li className="item">
-              <h3 className="author" size={18}>
-                {item['author_fullnam']}
-              </h3>
-              <p className="comment" size={14}>
-                {item.body}
-              </p>
-              <PostDate dateTime={item.created} />
-            </li>
-          </ul>
-        );
-      }
-      )}
+      <ul className={style.list}>
+        {loading ? (<div>Loading...</div>) :
+          data.map((item, i) => {
+            return (
+              <li className={style.item} key={i}>
+                <h3 className={style.author}>{item.author}</h3>
+                <Markdown className={style.comment}>{item.body}</Markdown>
+                <PostDate dateTime={item.created} />
+              </li>
+            );
+          })
+        }
+      </ul>
     </div>
   );
 };

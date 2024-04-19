@@ -1,7 +1,7 @@
 import {useState, useEffect, createContext, useContext} from 'react';
 import propTypes from 'prop-types';
 import {URL} from '../components/api/const';
-
+import {tokenContext} from '../context/tokenContext';
 
 // Create a context to manage Reddit posts
 const RedditContext = createContext();
@@ -12,12 +12,17 @@ export const useRedditPost = () => useContext(RedditContext);
 export const PostContextProvider = ({children}) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {token} = useContext(tokenContext);
 
   useEffect(() => {
     // Fetch Reddit posts
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`${URL}/best.json?limit=10`);
+        const response = await fetch(`${URL}/best.json?limit=10`, {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
         const data = await response.json();
         setPosts(data.data.children.map(child => child.data));
         setLoading(false);

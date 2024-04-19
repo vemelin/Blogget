@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export const URL = 'https://oauth.reddit.com';
 export const URL_AUTH = 'https://www.reddit.com/api/v1/authorize?';
 export const CLIENT_ID = 'JwjkkPXe6Ygls1yExLrBTg';

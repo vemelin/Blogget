@@ -31,8 +31,8 @@ const Modal = ({data, closeModal}) => {
     <div className={style.overlay} ref={overlayRef}>
       <div className={style.modal}>
         <h2 className={style.title}>Comments</h2>
-        <FormComments />
         <Comments data={comments} loading={loading} />
+        <FormComments />
         <button className={style.close} onClick={() => closeModal()}>
           <CloseIcon />
         </button>

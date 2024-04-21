@@ -1,16 +1,19 @@
 import {Header} from './components/Header/Header';
 import Main from './components/Main';
+import {Provider} from 'react-redux';
 import {AuthContextProvider} from './context/authContext';
-import {TokenContextProvider} from './context/tokenContext';
+import store from './store';
+
+console.log();
 
 function BloggetApp() {
   return (
-    <TokenContextProvider>
+    <Provider store={store}>
       <AuthContextProvider>
         <Header />
         <Main />
       </AuthContextProvider>
-    </TokenContextProvider>
+    </Provider>
   );
 }
 

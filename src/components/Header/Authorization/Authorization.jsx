@@ -1,23 +1,25 @@
 import {useContext, useState} from 'react';
 import React from 'react';
-import propTypes from 'prop-types';
 import style from './Authorization.module.css';
 import SVG_URL from '../../../img/login.svg';
 import {ReactSVG} from 'react-svg';
+import {useDispatch} from 'react-redux';
+import {deleteToken} from '../../../store';
 
 import Text from '../../../UI/Text/Text';
 import urlAuth from '../../api/auth';
-import {tokenContext} from '../../../context/tokenContext';
 import {authContext} from '../../../context/authContext';
 
+
 export const Authorization = () => {
-  const {deleteToken} = useContext(tokenContext);
   const [isOpen, setOpen] = useState(false);
+
   const {auth, clearAuth} = useContext(authContext);
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     // Clear Token and delete it from localStorage
-    deleteToken();
+    dispatch(deleteToken());
     clearAuth();
     // redirect to the home page
     window.location.href = '/';
@@ -46,8 +48,4 @@ export const Authorization = () => {
       )}
     </div>
   );
-};
-
-Authorization.propTypes = {
-  token: propTypes.string,
 };

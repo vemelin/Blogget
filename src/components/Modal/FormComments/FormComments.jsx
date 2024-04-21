@@ -1,11 +1,24 @@
-import {React, useRef, useState} from 'react';
+import {React, useContext, useRef, useState} from 'react';
 import style from './FormComments.module.css';
 import Text from '../../../UI/Text/Text';
+import {authContext} from '../../../context/authContext.js';
+import {useSelector, useDispatch} from 'react-redux';
+import {updateComment} from '../../../store';
 
 const FormComments = () => {
+  // const store = useStore();
+  // const value = store.getState().comment;
+  const value = useSelector(state => state.comment);
+  const dispatch = useDispatch();
+
+  const {auth} = useContext(authContext);
   const textAreaRef = useRef(null);
   const [getText, setText] = useState('');
   const [isFormOpen, setFormOpen] = useState(false);
+
+  const handleChange = e => {
+    dispatch(updateComment(e.target.value));
+  };
 
   // Temporary
   getText !== '' ? console.log(getText) : '';
@@ -22,17 +35,22 @@ const FormComments = () => {
       </Text>
       {isFormOpen && (
         <form className={style.form}>
-          <h3>Authorization Name</h3>
+          <Text As='h3' size={14} tsize={18}>
+            {auth.name}
+          </Text>
           <textarea
             className={style.textarea}
             autoFocus={true}
+            value={value}
             ref={textAreaRef}
+            onChange={handleChange}
           ></textarea>
           <button
             className={style.btn}
             onClick={(e) => {
               e.preventDefault();
               setFormOpen(false);
+              console.log(value);
               return setText(textAreaRef.current?.value);
             }}
           >

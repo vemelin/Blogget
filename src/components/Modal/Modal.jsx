@@ -8,7 +8,6 @@ import Comments from './Comments/Comments';
 import FormComments from './FormComments/FormComments';
 
 const Modal = ({data, closeModal}) => {
-  // console.log(data.id, data.subreddit);
   const overlayRef = useRef(null);
   const handleClick = e => {
     const target = e.target;

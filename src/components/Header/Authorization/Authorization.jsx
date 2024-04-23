@@ -4,7 +4,7 @@ import style from './Authorization.module.css';
 import SVG_URL from '../../../img/login.svg';
 import {ReactSVG} from 'react-svg';
 import {useDispatch} from 'react-redux';
-import {deleteToken} from '../../../store';
+import {deleteToken} from '../../../store/tokenReducer';
 
 import Text from '../../../UI/Text/Text';
 import urlAuth from '../../api/auth';

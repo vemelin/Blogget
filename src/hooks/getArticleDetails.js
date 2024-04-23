@@ -4,22 +4,23 @@ import {URL} from '../components/api/const';
 import {useSelector} from 'react-redux';
 
 const getArticleDetails = (get) => {
-  const token = useSelector(state => state.token);
+  const token = useSelector(state => state.getToken.token);
+  console.log(token);
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {subreddit, id} = get;
+  const {id} = get;
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response =
-          await fetch(`${URL}/r/${subreddit}/comments/${id}.json?limit=10`,
-            {
-              headers: {
-                'Authorization': `bearer ${token}`,
-                'Content-Type': 'application/json'
-              },
-            });
+          await fetch(`${URL}/comments/${id}.json?limit=10`,
+            // {
+            //   headers: {
+            //     Authorization: `bearer ${token}`,
+            //   },
+            // }
+          );
 
         const data = await response.json();
         setComments(data[1].data.children.map(child => child.data));

@@ -3,12 +3,12 @@ import style from './FormComments.module.css';
 import Text from '../../../UI/Text/Text';
 import {authContext} from '../../../context/authContext.js';
 import {useSelector, useDispatch} from 'react-redux';
-import {updateComment} from '../../../store';
+import {updateComment} from '../../../store/commentReducer';
 
 const FormComments = () => {
   // const store = useStore();
   // const value = store.getState().comment;
-  const value = useSelector(state => state.comment);
+  const value = useSelector(state => state.getComment.comment);
   const dispatch = useDispatch();
 
   const {auth} = useContext(authContext);
@@ -50,7 +50,6 @@ const FormComments = () => {
             onClick={(e) => {
               e.preventDefault();
               setFormOpen(false);
-              console.log(value);
               return setText(textAreaRef.current?.value);
             }}
           >

@@ -8,6 +8,7 @@ import {getToken} from './components/api/token';
 function BloggetApp() {
   const dispatch = useDispatch();
   dispatch(updateToken(getToken()));
+
   return (
     <AuthContextProvider>
       <Header />

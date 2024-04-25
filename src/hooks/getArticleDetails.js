@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import {useEffect, useState} from 'react';
 import {URL} from '../components/api/const';
-import {useSelector} from 'react-redux';
+// import {useSelector} from 'react-redux';
 
 const getArticleDetails = (get) => {
-  const token = useSelector(state => state.getToken.token);
+  // const token = useSelector(state => state.getToken.token);
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const {id} = get;
@@ -14,11 +14,11 @@ const getArticleDetails = (get) => {
       try {
         const response =
           await fetch(`${URL}/comments/${id}.json?limit=10`,
-            (!token) ? {
-              headers: {
-                Authorization: `bearer ${token}`,
-              },
-            } : {}
+            // (!token) ? {
+            //   headers: {
+            //     Authorization: `bearer ${token}`,
+            //   },
+            // } : {}
           );
 
         const data = await response.json();

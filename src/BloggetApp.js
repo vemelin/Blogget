@@ -1,17 +1,18 @@
 import {Header} from './components/Header/Header';
 import Main from './components/Main';
-import {Provider} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {AuthContextProvider} from './context/authContext';
-import {store} from './store';
+import {updateToken} from './store/tokenReducer';
+import {getToken} from './components/api/token';
 
 function BloggetApp() {
+  const dispatch = useDispatch();
+  dispatch(updateToken(getToken()));
   return (
-    <Provider store={store}>
-      <AuthContextProvider>
-        <Header />
-        <Main />
-      </AuthContextProvider>
-    </Provider>
+    <AuthContextProvider>
+      <Header />
+      <Main />
+    </AuthContextProvider>
   );
 }
 

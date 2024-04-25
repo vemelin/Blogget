@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux';
 
 const getArticleDetails = (get) => {
   const token = useSelector(state => state.getToken.token);
-  console.log(token);
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const {id} = get;
@@ -15,14 +14,15 @@ const getArticleDetails = (get) => {
       try {
         const response =
           await fetch(`${URL}/comments/${id}.json?limit=10`,
-            // {
-            //   headers: {
-            //     Authorization: `bearer ${token}`,
-            //   },
-            // }
+            (!token) ? {
+              headers: {
+                Authorization: `bearer ${token}`,
+              },
+            } : {}
           );
 
         const data = await response.json();
+        console.log(data);
         setComments(data[1].data.children.map(child => child.data));
         setLoading(false);
       } catch (error) {

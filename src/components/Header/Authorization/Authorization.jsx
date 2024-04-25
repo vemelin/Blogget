@@ -22,7 +22,7 @@ export const Authorization = () => {
     dispatch(deleteToken());
     clearAuth();
     // redirect to the home page
-    window.location.href = '/';
+    // window.location.href = '/';
   };
 
   return (

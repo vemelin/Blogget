@@ -1,7 +1,7 @@
-import {getToken, setToken} from '../components/api/token';
+import {setToken} from '../components/api/token';
 
 const initState = {
-  token: getToken(),
+  token: '',
 };
 
 const UPDATE_TOKEN = 'UPDATE_TOKEN';
@@ -21,17 +21,25 @@ export const deleteToken = token => (
   }
 );
 
+export const tokenMidleware = store => next => action => {
+  if (action.type === UPDATE_TOKEN) {
+    setToken(action.token);
+  }
+  if (action.type === DELETE_TOKEN) {
+    setToken('');
+  }
+  next(action);
+};
+
 export const tokenReducer = (state = initState, action) => {
   switch (action.type) {
     case UPDATE_TOKEN:
-      setToken(action.token);
       return {
         ...state,
         token: action.token,
       };
 
     case DELETE_TOKEN:
-      setToken('');
       return {
         ...state,
         token: '',

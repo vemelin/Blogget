@@ -5,17 +5,25 @@ import Modal from '../../../../Modal/Modal';
 
 const Title = ({data}) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const handleLogout = () => {
+    // window.location.href = '/#author';
+    // window.history.pushState('http://localhost:3000', 'Title', '/#author');
+    // console.log('test');
+  };
+
   return (
     <div>
       <Text
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           setModalOpen(true);
+          handleLogout();
         }}
         As="a"
         className={style.linkPost}
         size={18}
         tsize={24}
-        href={'#author'}
+        href={'#auth'}
       >
         {data.title}
       </Text>

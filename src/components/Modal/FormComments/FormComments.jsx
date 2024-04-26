@@ -1,9 +1,9 @@
-import {React, useContext, useRef, useState} from 'react';
+import {React, useRef, useState} from 'react';
 import style from './FormComments.module.css';
 import Text from '../../../UI/Text/Text';
-import {authContext} from '../../../context/authContext.js';
 import {useSelector, useDispatch} from 'react-redux';
 import {updateComment} from '../../../store/commentReducer';
+import useAuth from '../../../hooks/useAuth.js';
 
 const FormComments = () => {
   // const store = useStore();
@@ -11,7 +11,7 @@ const FormComments = () => {
   const value = useSelector(state => state.getComment.comment);
   const dispatch = useDispatch();
 
-  const {auth} = useContext(authContext);
+  const [auth] = useAuth();
   const textAreaRef = useRef(null);
   const [getText, setText] = useState('');
   const [isFormOpen, setFormOpen] = useState(false);

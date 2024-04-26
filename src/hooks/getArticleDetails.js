@@ -22,7 +22,6 @@ const getArticleDetails = (get) => {
           );
 
         const data = await response.json();
-        console.log(data);
         setComments(data[1].data.children.map(child => child.data));
         setLoading(false);
       } catch (error) {

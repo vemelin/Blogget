@@ -8,7 +8,6 @@ const Title = ({data}) => {
   const handleLogout = () => {
     // window.location.href = '/#author';
     // window.history.pushState('http://localhost:3000', 'Title', '/#author');
-    // console.log('test');
   };
 
   return (

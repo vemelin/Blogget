@@ -1,20 +1,21 @@
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 import React from 'react';
 import style from './Authorization.module.css';
 import SVG_URL from '../../../img/login.svg';
 import {ReactSVG} from 'react-svg';
 import {useDispatch} from 'react-redux';
 import {deleteToken} from '../../../store/tokenReducer';
+import AuthLoadingMsg from './AuthLoadingMsg/AuthLoadingMsg';
 
 import Text from '../../../UI/Text/Text';
 import urlAuth from '../../api/auth';
-import {authContext} from '../../../context/authContext';
+import useAuth from '../../../hooks/useAuth';
 
 
 export const Authorization = () => {
   const [isOpen, setOpen] = useState(false);
 
-  const {auth, clearAuth} = useContext(authContext);
+  const [auth, loading, clearAuth] = useAuth();
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -22,12 +23,14 @@ export const Authorization = () => {
     dispatch(deleteToken());
     clearAuth();
     // redirect to the home page
-    // window.location.href = '/';
+    window.location.href = '/';
   };
 
   return (
     <div className={style.container}>
-      {auth.name ? (
+      {loading ? (
+        <AuthLoadingMsg />
+      ) : auth.name ? (
         <button className={style.btn} onClick={() => setOpen(!isOpen)}>
           <img className={style.img} src={auth.img} title={auth.name} />
           <Text As="span">{auth.name}</Text>

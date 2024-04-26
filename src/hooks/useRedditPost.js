@@ -7,8 +7,6 @@ const useRedditPost = () => {
   const [loading, setLoading] = useState(true);
   const token = useSelector(state => state.getToken.token);
 
-  console.log(token);
-
   useEffect(() => {
     // Fetch Reddit posts
     const fetchPosts = async () => {

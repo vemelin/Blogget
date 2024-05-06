@@ -7,6 +7,12 @@ const useRedditPost = () => {
   const [loading, setLoading] = useState(true);
   const token = useSelector(state => state.getToken.token);
 
+  // console.log(token);
+
+  // 'User-Agent': 'reddit-oauth/1.1.1 by aihamh',
+  // 'Authorization': `bearer ${token}`,
+  // 'Accept': 'application/json',
+
   useEffect(() => {
     // Fetch Reddit posts
     const fetchPosts = async () => {

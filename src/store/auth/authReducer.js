@@ -9,6 +9,7 @@ const initialState = {
   loading: false,
   data: {},
   error: '',
+  after: '',
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,6 +18,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: '',
       };
     case AUTH_REQUEST_SUCCESS:
       return {
@@ -24,6 +26,7 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         data: action.data,
         error: '',
+        after: action.after,
       };
     case AUTH_REQUEST_ERROR:
       return {
